@@ -67,11 +67,11 @@
 				75AA3C692A2568C100D95A80 /* ViewController.swift */,
 				7597FFEC2A262D9900305BDC /* myView.swift */,
 				759C3F3B2A264E19002F49B3 /* myTableViewCell.swift */,
+				75E3A3362A26A0CD003E82A7 /* DataController.swift */,
 				75AA3C6E2A2568C200D95A80 /* Assets.xcassets */,
 				75AA3C702A2568C200D95A80 /* LaunchScreen.storyboard */,
 				75AA3C732A2568C200D95A80 /* Info.plist */,
 				75E3A3332A26A046003E82A7 /* Food.xcdatamodeld */,
-				75E3A3362A26A0CD003E82A7 /* DataController.swift */,
 			);
 			path = myAppUIKit;
 			sourceTree = "<group>";

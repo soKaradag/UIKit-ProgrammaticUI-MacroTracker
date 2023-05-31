@@ -15,7 +15,7 @@ class DataController {
         self.context = context
     }
     
-    func fetchFoods() -> [Food]? {
+    func fetchFoods() -> [Food] {
         let request: NSFetchRequest<Food> = Food.fetchRequest()
         
         do {
@@ -23,7 +23,7 @@ class DataController {
             return result
         } catch {
             print("Can't fetch data.")
-            return nil
+            return []
         }
     }
     

@@ -23,12 +23,8 @@ class ViewController: UIViewController {
     }
     
     private var foods: [Food] {
-        if let fetchedFoods = dataController.fetchFoods() {
-            return fetchedFoods
-        } else {
-            print("No foods fetched")
-            return []
-        }
+        let fetchedFoods = dataController.fetchFoods()
+        return fetchedFoods
     }
     
     private let tableView: UITableView = {

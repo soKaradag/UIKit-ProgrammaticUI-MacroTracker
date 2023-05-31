@@ -45,18 +45,25 @@ class myView: UIView {
     private let myTextField: UITextField = {
         let label = UITextField()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.placeholder = "   Name"
+        label.placeholder = "Name"
         label.layer.borderWidth = 1
         label.layer.cornerRadius = 5
+        let paddingView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 20))
+        label.leftView = paddingView
+        label.leftViewMode = .always
         return label
     }()
     
     private let myTextCalorie: UITextField = {
         let label = UITextField()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.placeholder = "   Calorie"
+        label.placeholder = "Calorie"
         label.layer.borderWidth = 1
         label.layer.cornerRadius = 5
+        let paddingView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 20))
+        label.leftView = paddingView
+        label.leftViewMode = .always
+        label.keyboardType = .numberPad
         return label
     }()
     
@@ -67,7 +74,31 @@ class myView: UIView {
         addSubview(myTextCalorie)
         addSubview(addFoodButton)
         
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        self.addGestureRecognizer(tapGesture)
+        
+        myTextField.inputAccessoryView = createDoneToolbar()
+        myTextCalorie.inputAccessoryView = createDoneToolbar()
+
         applyConstraints()
+    }
+    
+    @objc private func dismissKeyboard() {
+        self.endEditing(true)
+    }
+    
+    private func createDoneToolbar() -> UIToolbar {
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneButtonTapped))
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        toolbar.setItems([flexibleSpace, doneButton], animated: false)
+        return toolbar
+    }
+    
+    // Method to handle "Done" button tap
+    @objc private func doneButtonTapped() {
+        self.endEditing(true)
     }
     
     private func applyConstraints() {
